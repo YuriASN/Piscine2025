@@ -19,6 +19,7 @@ void	putstr_newline(char *str)
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
+	write(1, "\n", 1);
 }
 
 /** @brief
@@ -67,9 +68,6 @@ int	main(int argc, char **argv)
 	put_in_order(&argv[1]);
 	i = 0;
 	while (++i < argc)
-	{
 		putstr_newline(argv[i]);
-		write(1, "\n", 1);
-	}
 	return (0);
 }
