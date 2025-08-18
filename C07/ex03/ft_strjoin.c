@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:49:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/14 17:19:28 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/18 19:15:09 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		++i;
 	return (i);
@@ -45,23 +47,6 @@ char	*ft_strcat(char *dest, char *src)
 	while (src[++j])
 		dest[i + j] = src[j];
 	dest[i + j] = src[j];
-	return (dest);
-}
-
-/** @brief
- * Copy source to destination until end of source
- * @param dest
- * String to copy to
- * @param src
- * String to copy from */
-char	*ft_strcpy(char *dest, char *src)
-{
-	int	i;
-
-	i = -1;
-	while (src[++i])
-		dest[i] = src[i];
-	dest[i] = src[i];
 	return (dest);
 }
 
