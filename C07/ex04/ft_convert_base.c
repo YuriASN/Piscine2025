@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:37:29 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/14 13:49:24 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/18 23:24:55 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,16 @@ char	*convert_to_base(long int n, char *base)
 	str = NULL;
 	if (n < 0)
 	{
-		str = (char *)malloc(sizeof(char) * 2);
+		str = (char *)malloc(sizeof(char) * 3);
 		str[0] = '-';
 		str[1] = '\0';
+		str[2] = '\0';
 		n *= -1;
 	}
 	base_size = ft_strlen(base);
 	if (n >= base_size)
 		str = ft_strbond(str, convert_to_base(n / base_size, base));
-	else
+	else if (!str)
 	{
 		str = (char *)malloc(sizeof(char) * 2);
 		str [0] = '\0';
@@ -117,9 +118,9 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 
 //tester
 /* int main()	{
-	char	*nbr = "42";
+	char	*nbr = "  +--+-3 56";
 	char	*base_from = "0123456789";
-	char	*base_to = "01";
+	char	*base_to = "0123456";
 	char	*res = NULL;
 	res = ft_convert_base(nbr, base_from, base_to);
 	printf("Num: %s, in: %s, to: %s is: %s\n", nbr, base_from, base_to, res);
