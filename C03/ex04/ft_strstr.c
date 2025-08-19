@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:02:20 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/11 18:12:46 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/19 23:31:07 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ char	*ft_strstr(char *str, char *to_find)
 	int	j;
 
 	i = -1;
-/*	
-POST DELIVER NOTE: This is only found on the man of cppreference
-	if (!to_find || !tofind[0])
+
+	if (!to_find || !to_find[0])
 		return (str);
-*/
 	while (str[++i])
 	{
 		j = -1;
