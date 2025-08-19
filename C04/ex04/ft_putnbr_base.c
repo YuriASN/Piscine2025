@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:59:39 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/11 21:18:35 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/20 00:04:35 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_check_base(char *base)
  * The number to convert
  * @param
  * The base to convert to */
-void	print_base(ssize_t n, char *base)
+void	print_base(long n, char *base)
 {
 	int	base_size;
 
@@ -75,17 +75,12 @@ void	ft_putnbr_base(int nbr, char *base)
 {
 	if (!ft_check_base(base))
 		return ;
-	if (nbr == -2147483648 && base[0] == '0' && base[1] == '1')
-	{
-		write(1, "-10000000000000000000000000000000", 33);
-		return ;
-	}
 	print_base(nbr, base);
 }
 
 /* int main()	{
-	int		nbr = 894867;
-	char	*base = "0123456789abcdef";
+	int		nbr = -2147483648;
+	char	*base = "01";
 
 	ft_putnbr_base(nbr, base);
 	write(1, "\n", 1);
