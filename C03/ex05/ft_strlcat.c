@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:12:09 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/11 18:10:38 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/19 23:26:49 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		dest[d_len + i] = src[i];
 		++i;
 	}
-	if (d_len + i < size)
-	{
-		dest[d_len + i] = '\0';
-		return (d_len + ft_strlen(src));
-	}
+	dest[d_len + i] = '\0';
 	return (size);
 }
 
