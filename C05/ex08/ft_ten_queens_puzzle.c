@@ -6,12 +6,28 @@
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 18:08:47 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/20 20:44:23 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:23:10 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
+
+/** @brief
+ * Copy source to destination until end of source
+ * @param dest
+ * String to copy to
+ * @param src
+ * String to copy from */
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	i = -1;
+	while (src[++i])
+		dest[i] = src[i];
+	dest[i] = src[i];
+	return (dest);
+}
 
 void	putcomb(char *str)
 {
@@ -44,17 +60,15 @@ int	is_eaten(char *str, int i, char c)
 int	print_possibility(char *str, int index)
 {
 	int		poss;
-	int		i;
 	char	new;
 
 	poss = 0;
-	i = index - 1;
-	while (++i < 10)
+	new = '0';
+	while (new <= '9')
 	{
-		new = i + '0';
-		if (!is_eaten(str, i, new))
+		if (!is_eaten(str, index, new))
 		{
-			str[i] = new;
+			str[index] = new;
 			poss += print_possibility(str, index + 1);
 			if (index == 9)
 			{
@@ -62,22 +76,25 @@ int	print_possibility(char *str, int index)
 				return (poss + 1);
 			}
 		}
+		new++;
 	}
 	return (poss);
 }
 
-//0257948136
 int	ft_ten_queens_puzzle(void)
 {
-	char	*comb;
+	char	comb[10];
 	int		all_poss;
 
-	comb = "0000000000";
+	ft_strcpy(comb, "0000000000");
 	all_poss = print_possibility(comb, 0);
 	return (all_poss);
 }
 
+//test
+/* 
+#include <stdio.h>
 int main()	{
 	printf("%d possibilities\n", ft_ten_queens_puzzle());
 	return (0);
-}
+}//0257948136 */
