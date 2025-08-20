@@ -19,7 +19,7 @@
 void	ft_putnbr(int nb)
 {
 	char	c;
-	ssize_t	n;
+	long	n;
 
 	n = nb;
 	if (n < 0)
