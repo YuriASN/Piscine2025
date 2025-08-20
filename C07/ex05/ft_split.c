@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:57:07 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/20 02:22:06 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/20 03:01:13 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,23 @@ int	has_same_char(char *s1, char *s2)
 	int	j;
 
 	i = 0;
-	if (!s2[0])
-		return (0);
-	while (s1[i])
+	j = -1;
+	while (s2[++j])
 	{
-		j = -1;
-		while (s2[++j])
+		if (s2[j] == s1[i])
 		{
-			if (s2[j] == s1[i])
-			{
-				i++;
-				break ;
-			}
+			i++;
+			j = -1;
 		}
-		if (!s2[j])
-		{
-			j = 0;
-			while (s1[i + j] && ((s1[i + j] >= 8 && s1[i + j] <= 13) || s1[i + j] == ' '))
-				j++;
-			if (s1[i + j] && i != 0 && has_same_char(&s1[i + j], s2))
-				return (i + j + has_same_char(&s1[i + j], s2));
-			return (i);
-		}
+	}
+	if (!s2[j])
+	{
+		j = i;
+		while (s1[j] && ((s1[j] >= 8 && s1[j] <= 13) || s1[j] == ' '))
+			j++;
+		if (s1[j] && i != 0 && has_same_char(&s1[j], s2))
+			return (j + has_same_char(&s1[j], s2));
+		return (i);
 	}
 	return (i);
 }
@@ -138,7 +133,6 @@ char	**ft_split(char *str, char *charset)
 	if (!str)
 		return (NULL);
 	c_strs = count_strings(str, charset);
-fprintf(stderr, "Number of strings = %d\n", c_strs);
 	strs = (char **)malloc(sizeof(char *) * (c_strs + 1));
 	if (!strs)
 		return (NULL);
