@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:02:20 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/19 23:31:07 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:29:07 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*ft_strstr(char *str, char *to_find)
 	int	j;
 
 	i = -1;
-
 	if (!to_find || !to_find[0])
 		return (str);
 	while (str[++i])
