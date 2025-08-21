@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 18:35:53 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/20 22:38:14 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:46:56 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 
 	if (!ac)
 		return (NULL);
-	arr = (t_stock_str *)malloc(sizeof(t_stock_str *) * (ac + 1));
+	arr = (t_stock_str *)malloc(sizeof(t_stock_str) * (ac + 1));
 	if (!arr)
 		return (NULL);
 	i = -1;
