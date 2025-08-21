@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/15 13:19:33 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/15 13:19:43 by ysantos-         ###   ########.fr       */
+/*   Created: 2025/08/14 13:57:07 by ysantos-          #+#    #+#             */
+/*   Updated: 2025/08/20 03:01:13 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,23 @@ int	has_same_char(char *s1, char *s2)
 	int	j;
 
 	i = 0;
-	while (s1[i])
+	j = -1;
+	while (s2[++j])
 	{
-		j = -1;
-		while (s2[++j])
+		if (s2[j] == s1[i])
 		{
-			if (s2[j] == s1[i])
-			{
-				i++;
-				break ;
-			}
+			i++;
+			j = -1;
 		}
-		if (!s2[j])
-			return (i);
+	}
+	if (!s2[j])
+	{
+		j = i;
+		while (s1[j] && ((s1[j] >= 8 && s1[j] <= 13) || s1[j] == ' '))
+			j++;
+		if (s1[j] && i != 0 && has_same_char(&s1[j], s2))
+			return (j + has_same_char(&s1[j], s2));
+		return (i);
 	}
 	return (i);
 }
@@ -67,7 +71,7 @@ int	count_strings(char *str, char *set)
 
 	i = -1;
 	count = 0;
-	if (!str || !ft_strlen(str) || !set)
+	if (!str || !str[0] || !set)
 		return (0);
 	while (str[++i])
 	{
