@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 19:41:12 by ysantos-          #+#    #+#             */
-/*   Updated: 2025/08/20 18:27:36 by ysantos-         ###   ########.fr       */
+/*   Updated: 2025/08/21 20:16:49 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	get_digits(int n)
 	return (d);
 }
 
-int	order_nbr(int nbr)
+int	order_nbr(int nbr, int n)
 {
 	int	decimal;
 	int	i_digit;
@@ -52,7 +52,7 @@ int	order_nbr(int nbr)
 	decimal = 1;
 	while ((nbr / 10) / decimal)
 		decimal *= 10;
-	while (decimal > 1)
+	while (decimal > 1 && get_digits(nbr) <= n)
 	{
 		i_digit = (nbr / decimal) % 10;
 		if (!i_digit)
@@ -80,7 +80,7 @@ void	ft_print_combn(int n)
 	digits = 1;
 	while (++digits < n)
 		nbr *= 10;
-	nbr = order_nbr(nbr);
+	nbr = order_nbr(nbr, n);
 	digits = get_digits(nbr);
 	if (n == 1)
 		write(1, "0, ", 3);
@@ -92,7 +92,7 @@ void	ft_print_combn(int n)
 			ft_putnbr(nbr);
 		nbr++;
 		if (!(nbr % 10))
-			nbr = order_nbr(nbr);
+			nbr = order_nbr(nbr, n);
 		digits = get_digits(nbr);
 		if (digits <= n)
 			write (1, ", ", 2);
@@ -101,7 +101,7 @@ void	ft_print_combn(int n)
 
 /* int main()	{
 
-	ft_print_combn(3);
+	ft_print_combn(9);
 	write(1, "\n", 1);
 	return (0);
 } */
